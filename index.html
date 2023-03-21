@@ -20,7 +20,7 @@
         <div class="top">
           <div class="logo">
             <img src="./images/logo.png" alt="" />
-            <h2>FINANCE<span class="danger">TRACKER</span></h2>
+            <h2>MONEY<span class="danger">TRACK</span></h2>
           </div>
           <div class="close" id="close-btn">
             <span class="material-icons">close</span>
@@ -31,37 +31,16 @@
             <span class="material-icons">grid_view</span>
             <h3>Dashboard</h3>
           </a>
-          <a href="#">
-            <span class="material-icons">person_outline</span>
-            <h3>Customers</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">receipt_long</span>
-            <h3>Orders</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">insights</span>
-            <h3>Analytics</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">mail_outline</span>
-            <h3>Messages</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">inventory</span>
-            <h3>Products</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">report</span>
-            <h3>Reports</h3>
+          <a href="#"id="create-income-btn">
+            <span class="material-icons">arrow_upward</span>
+            <h3>Añadir Ingreso</h3>
+          <a href="#" id="create-expenses-btn">
+            <span class="material-icons">arrow_downward</span>
+            <h3>Añadir Gasto</h3>
           </a>
           <a href="#">
             <span class="material-icons">settings</span>
             <h3>Settings</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">add</span>
-            <h3>Add Product</h3>
           </a>
           <a href="#">
             <span class="material-icons">logout</span>
@@ -69,6 +48,89 @@
           </a>
         </div>
       </aside>
+      <!-- END OF ASIDE -->
+      <main>
+        <h1>Dashboard</h1>
+        <div class="date">
+          <input type="date" />
+        </div>
+        <div class="insights">
+          <div class="sales">
+            <span class="material-icons">analytics</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Tu Dinero</h3>
+                <h1 class="your-money"></h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>81%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last month</small>
+          </div>
+          <!-- END OF SALES -->
+          <div class="expenses">
+            <span class="material-icons">bar_chart</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Gastos</h3>
+                <h1 class="your-expenses"></h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>62%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last month</small>
+          </div>
+          <!-- END OF EXPENSES -->
+          <div class="income">
+            <span class="material-icons">stacked_line_chart</span>
+            <div class="middle">
+              <div class="left">
+                <h3>Ingresos</h3>
+                <h1 class="your-income"></h1>
+              </div>
+              <div class="progress">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="number">
+                  <p>44%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last month</small>
+          </div>
+          <!-- END OF INCOME -->
+        </div>
+      </main>
     </div>
+    <div class="income-modal" id="income-modal">
+      <span class="material-icons" id="close-income-modal-btn">close</span>
+      <h1>Añadir Ingreso</h1>
+      <form class="income-form">
+        <input type="text" class="income-input" />
+        <input type="submit" value="Añadir Ingreso" id="add-income-btn">
+      </form>
+    </div>
+    <div class="expenses-modal" id="expenses-modal">
+      <span class="material-icons" id="close-expenses-modal-btn">close</span>
+      <h1>Añadir Ingreso</h1>
+      <form class="expenses-form">
+        <input type="text" class="expenses-input" />
+        <input type="submit" value="Añadir Ingreso" id="add-expenses-btn">
+      </form>
+    </div>
+    <script src="./index.js"></script>
   </body>
 </html>
