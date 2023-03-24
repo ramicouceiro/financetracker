@@ -31,10 +31,10 @@
             <span class="material-icons">grid_view</span>
             <h3>Dashboard</h3>
           </a>
-          <a href="#"id="create-income-btn">
+          <a href="#"class="create-income-btn">
             <span class="material-icons">arrow_upward</span>
             <h3>Añadir Ingreso</h3>
-          <a href="#" id="create-expenses-btn">
+          <a href="#" class="create-expenses-btn">
             <span class="material-icons">arrow_downward</span>
             <h3>Añadir Gasto</h3>
           </a>
@@ -55,7 +55,8 @@
           <input type="date" />
         </div>
         <div class="insights">
-          <div class="sales">
+          <!-- AHORROS -->
+          <div class="savings">
             <span class="material-icons">analytics</span>
             <div class="middle">
               <div class="left">
@@ -63,9 +64,6 @@
                 <h1 class="your-money"></h1>
               </div>
               <div class="progress">
-                <svg>
-                  <circle cx="38" cy="38" r="36"></circle>
-                </svg>
                 <div class="number">
                   <p>81%</p>
                 </div>
@@ -73,7 +71,7 @@
             </div>
             <small class="text-muted">Last month</small>
           </div>
-          <!-- END OF SALES -->
+          <!-- EXPENSES -->
           <div class="expenses">
             <span class="material-icons">bar_chart</span>
             <div class="middle">
@@ -82,17 +80,16 @@
                 <h1 class="your-expenses"></h1>
               </div>
               <div class="progress">
-                <svg>
-                  <circle cx="38" cy="38" r="36"></circle>
-                </svg>
                 <div class="number">
-                  <p>62%</p>
+                  <a href="#" class="create-expenses-btn">
+                    <span class="material-icons">arrow_downward</span>
+                  </a>
                 </div>
               </div>
             </div>
             <small class="text-muted">Last month</small>
           </div>
-          <!-- END OF EXPENSES -->
+          <!-- INCOME -->
           <div class="income">
             <span class="material-icons">stacked_line_chart</span>
             <div class="middle">
@@ -101,9 +98,24 @@
                 <h1 class="your-income"></h1>
               </div>
               <div class="progress">
-                <svg>
-                  <circle cx="38" cy="38" r="36"></circle>
-                </svg>
+                <div class="number">
+                  <a href="#" class="create-income-btn">
+                    <span class="material-icons">arrow_upward</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last month</small>
+          </div>
+          <!-- USDT -->
+          <div class="usdt">
+            <span class=""><img src="./images/usdt.png" alt=""></span>
+            <div class="middle">
+              <div class="left">
+                <h3>USDT</h3>
+                <h1 class="your-usdt"></h1>
+              </div>
+              <div class="progress">
                 <div class="number">
                   <p>44%</p>
                 </div>
@@ -111,23 +123,40 @@
             </div>
             <small class="text-muted">Last month</small>
           </div>
-          <!-- END OF INCOME -->
+          <!-- BNB -->
+          <div class="bnb">
+            <span class=""><img src="./images/bnb.png" alt=""></span>
+            <div class="middle">
+              <div class="left">
+                <h3>BNB</h3>
+                <h1 class="your-bnb"></h1>
+              </div>
+              <div class="progress">
+                <div class="number">
+                  <p>44%</p>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Last month</small>
+          </div>
         </div>
       </main>
     </div>
-    <div class="income-modal" id="income-modal">
-      <span class="material-icons" id="close-income-modal-btn">close</span>
-      <h1>Añadir Ingreso</h1>
-      <form class="income-form">
-        <input type="text" class="income-input" />
-        <input type="submit" value="Añadir Ingreso" id="add-income-btn">
-      </form>
+    <div class="modal-wrapper">
+      <div class="income-modal modal" id="income-modal">
+        <span class="material-icons" id="close-income-modal-btn">close</span>
+        <h1>Añadir Ingreso</h1>
+        <form class="income-form">
+          <input type="number" class="income-input" />
+          <input type="submit" value="Añadir Ingreso" id="add-income-btn">
+        </form>
+      </div>
     </div>
-    <div class="expenses-modal" id="expenses-modal">
+    <div class="expenses-modal modal" id="expenses-modal">
       <span class="material-icons" id="close-expenses-modal-btn">close</span>
-      <h1>Añadir Ingreso</h1>
+      <h1>Añadir Gasto</h1>
       <form class="expenses-form">
-        <input type="text" class="expenses-input" />
+        <input type="number" class="expenses-input" />
         <input type="submit" value="Añadir Ingreso" id="add-expenses-btn">
       </form>
     </div>
