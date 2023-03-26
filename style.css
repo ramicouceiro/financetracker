@@ -24,7 +24,7 @@
   --color-dark-variant: #677483;
   --color-background: #f6f6f9;
   --color-bnb: linear-gradient(to left, #ffd593, #ffbb55);
-  --color-usdt: conic-gradient(from 135deg, #5fdbcf, #44c0b4);
+  --color-usdt: linear-gradient(to left, #5fdbcf, #44c0b4);
 
   --card-border-radius: 2rem;
   --border-radius-1: 0.4rem;
@@ -276,6 +276,13 @@ main .insights > div.income span {
   background: var(--color-success);
 }
 
+main .insights > div.bnb .bnb-btn {
+  background: var(--color-bnb);
+}
+
+main .insights > div.usdt .usdt-btn {
+  background: var(--color-usdt);
+}
 main .insights > div.usdt img,
 main .insights > div.bnb img {
   position: absolute;
