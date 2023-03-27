@@ -377,6 +377,30 @@ main .insights .progress .number a {
   align-self: flex-end;
 }
 
+.modal-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.modal select {
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 5px;
+  position: relative;
+  appearance: none;
+  padding-right: 15px;
+  background-image: url(./images/arrow-down.png);
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  background-size: 10px;
+  background-color: var(--color-light);
+  box-shadow: var(--box-shadow);
+}
+
 .open {
   display: flex;
   filter: blur(0);
