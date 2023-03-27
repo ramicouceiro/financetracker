@@ -101,7 +101,7 @@ small {
 }
 
 .text-muted {
-  color: var(--color-info-dark);
+  color: var(--color-info-light);
 }
 
 p {
@@ -334,7 +334,8 @@ main .insights .progress .number a {
 }
 
 .income-modal,
-.expenses-modal {
+.expenses-modal,
+.modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -352,16 +353,14 @@ main .insights .progress .number a {
   /* height: 350px; */
 }
 
-.income-modal .income-form input,
-.expenses-modal .expenses-form input {
+.modal input {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid var(--color-primary);
   border-radius: var(--border-radius-1);
   margin: 0.5rem 0;
 }
-.income-modal .income-form input[type="submit"],
-.expenses-modal .expenses-form input[type="submit"] {
+.modal .modal-form input[type="submit"] {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid var(--color-light);
@@ -372,8 +371,7 @@ main .insights .progress .number a {
   cursor: pointer;
 }
 
-.income-modal span,
-.expenses-modal span {
+.modal span {
   cursor: pointer;
   color: var(--color-danger);
   align-self: flex-end;

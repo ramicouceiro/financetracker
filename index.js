@@ -6,58 +6,6 @@ let money = 0;
 let expenses = 0;
 let income = 0;
 
-yourMoney.innerHTML = `$${money}`;
-yourExpenses.innerHTML = `$${expenses}`;
-yourIncome.innerHTML = `$${income}`;
-
-const incomeBtn = document.querySelectorAll(".create-income-btn");
-const closeIncomeBtn = document.getElementById("close-income-modal-btn");
-const incomeModal = document.getElementById("income-modal");
-const addInputBtn = document.getElementById("add-income-btn");
-
-const openIncomeModal = () => {
-  incomeModal.classList.toggle("open");
-  document.querySelector(".container").classList.toggle("blur");
-};
-
-const expensesBtn = document.querySelectorAll(".create-expenses-btn");
-const closeExpensesBtn = document.getElementById("close-expenses-modal-btn");
-const expensesModal = document.getElementById("expenses-modal");
-const addExpensesBtn = document.getElementById("add-expenses-btn");
-
-const openExpensesModal = () => {
-  expensesModal.classList.toggle("open");
-  document.querySelector(".container").classList.toggle("blur");
-};
-
-const addIncome = () => {
-  const incomeInput = document.querySelector(".income-input");
-  const incomeValue = incomeInput.value;
-  if (incomeValue === "") {
-    return;
-  } else {
-    income += parseInt(incomeValue);
-    money += parseInt(incomeValue);
-    yourIncome.innerHTML = `$${income}`;
-    yourMoney.innerHTML = `$${money}`;
-    incomeInput.value = "";
-  }
-};
-
-const addExpenses = () => {
-  const expensesInput = document.querySelector(".expenses-input");
-  const expensesValue = expensesInput.value;
-  if (expensesValue === "") {
-    return;
-  } else {
-    expenses += parseInt(expensesValue);
-    money -= parseInt(expensesValue);
-    yourExpenses.innerHTML = `$${expenses}`;
-    yourMoney.innerHTML = `$${money}`;
-    expensesInput.value = "";
-  }
-};
-
 const modals = document.querySelectorAll(".modal");
 
 const observer = new IntersectionObserver((entries) => {
@@ -72,22 +20,64 @@ modals.forEach((modal) => {
   observer.observe(modal);
 });
 
-const init = () => {
-  incomeBtn.forEach((btn) => btn.addEventListener("click", openIncomeModal));
-  expensesBtn.forEach((btn) =>
-    btn.addEventListener("click", openExpensesModal)
+const fetchDolar = async () => {
+  const response = await fetch(
+    "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
   );
-  closeIncomeBtn.addEventListener("click", openIncomeModal);
-  closeExpensesBtn.addEventListener("click", openExpensesModal);
-  addInputBtn.addEventListener("click", () => {
-    addIncome();
-    openIncomeModal();
+  const data = await response.json();
+  const precioDolar = data[1].casa.compra;
+
+  const dolarHtml = document.querySelector(".usd-price");
+
+  dolarHtml.innerHTML = `USD$1 = ARS$${precioDolar}`;
+};
+// Botones
+const usdtBtn = document.querySelector(".usdt-btn");
+const expensesBtn = document.querySelector(".create-expenses-btn");
+const incomeBtn = document.querySelector(".create-income-btn");
+const renderModal = (type) => {
+  return `
+        <span class="material-icons" id="close-modal-btn">close</span>
+        <h1>Añadir ${type}</h1>
+        <form class="modal-form">
+          <input type="number" class="modal-input"/>
+          <input type="submit" value="Añadir Ingreso" id="add-${type}-btn">
+        </form>
+  `;
+};
+
+const openModal = (type) => {
+  const modal = document.createElement("div");
+  modal.classList.add(`${type}-modal`);
+  modal.classList.add("modal");
+  modal.classList.add("open");
+
+  modal.innerHTML = renderModal(type);
+  const body = document.querySelector("body");
+  body.appendChild(modal);
+  document.createElement("div").classList.toggle("blur");
+  const closeModalBtn = document.getElementById("close-modal-btn");
+
+  closeModalBtn.addEventListener("click", () => {
+    closeModal();
   });
-  addExpensesBtn.addEventListener("click", () => {
-    addExpenses();
-    openExpensesModal();
+};
+const closeModal = () => {
+  const modal = document.querySelector(".modal.open");
+  modal.remove();
+};
+
+const init = () => {
+  incomeBtn.addEventListener("click", () => {
+    openModal("income");
   });
-  console.log(incomeBtn);
+  expensesBtn.addEventListener("click", () => {
+    openModal("usdt");
+  });
+  usdtBtn.addEventListener("click", () => {
+    openModal("usdt");
+  });
+  fetchDolar();
 };
 
 init();

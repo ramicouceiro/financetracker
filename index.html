@@ -14,7 +14,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="body">
     <div class="container">
       <aside>
         <div class="top">
@@ -114,16 +114,17 @@
               <div class="left">
                 <h3>USDT</h3>
                 <h1 class="your-usdt"></h1>
-              </div>
+                <p class="text-muted"></p>
+              </div>  
               <div class="progress">
                 <div class="number">
-                  <a href="#" class="create-expenses-btn">
-                  <span class="material-icons usdt-btn">add</span>
+                  <a href="#" class="usdt-btn">
+                  <span class="material-icons ">add</span>
                 </a>
                 </div>
               </div>
             </div>
-            <small class="text-muted">Last month</small>
+            <small class="text-muted usd-price"></small>
           </div>
           <!-- BNB -->
           <div class="bnb">
@@ -146,24 +147,7 @@
         </div>
       </main>
     </div>
-    <div class="modal-wrapper">
-      <div class="income-modal modal" id="income-modal">
-        <span class="material-icons" id="close-income-modal-btn">close</span>
-        <h1>Añadir Ingreso</h1>
-        <form class="income-form">
-          <input type="number" class="income-input" />
-          <input type="submit" value="Añadir Ingreso" id="add-income-btn">
-        </form>
-      </div>
-    </div>
-    <div class="expenses-modal modal" id="expenses-modal">
-      <span class="material-icons" id="close-expenses-modal-btn">close</span>
-      <h1>Añadir Gasto</h1>
-      <form class="expenses-form">
-        <input type="number" class="expenses-input" />
-        <input type="submit" value="Añadir Ingreso" id="add-expenses-btn">
-      </form>
-    </div>
+    <div class="modal-wrapper"></div>
     <script src="./index.js"></script>
   </body>
 </html>
