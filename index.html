@@ -14,140 +14,136 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="body">
-    <div class="container">
-      <aside>
+  <div class="modal-wrapper">
+    <body class="body">
+      <div class="container">
+        <aside>
+          <div class="top">
+            <div class="logo">
+              <img src="./images/logo.png" alt="" />
+              <h2>MONEY<span class="danger">TRACK</span></h2>
+            </div>
+            <div class="close" id="close-btn">
+              <span class="material-icons">close</span>
+            </div>
+          </div>
+          <div class="sidebar">
+            <a href="#" class="active">
+              <span class="material-icons">grid_view</span>
+              <h3>Dashboard</h3>
+            </a>
+            <a href="#"class="create-income-btn">
+              <span class="material-icons">arrow_upward</span>
+              <h3>Añadir Ingreso</h3>
+            <a href="#" class="create-expenses-btn">
+              <span class="material-icons">arrow_downward</span>
+              <h3>Añadir Gasto</h3>
+            </a>
+            <a href="#">
+              <span class="material-icons">settings</span>
+              <h3>Settings</h3>
+            </a>
+            <a href="#">
+              <span class="material-icons">logout</span>
+              <h3>Logout</h3>
+            </a>
+          </div>
+        </aside>
+        <!-- END OF ASIDE -->
+        <main>
+          <h1>Dashboard</h1>
+          <div class="date">
+            <input type="date" />
+          </div>
+          <div class="insights">
+            <!-- AHORROS -->
+            <div class="savings">
+              <span class="material-icons">analytics</span>
+              <div class="middle">
+                <div class="left">
+                  <h3>Tu Dinero</h3>
+                  <h1 class="your-money"></h1>
+                </div>
+                <div class="progress">
+                  <div class="number">
+    
+                  </div>
+                </div>
+              </div>
+              <small class="text-muted">Last month</small>
+            </div>
+            <!-- EXPENSES -->
+            <div class="expenses">
+              <span class="material-icons">bar_chart</span>
+              <div class="middle">
+                <div class="left">
+                  <h3>Gastos</h3>
+                  <h1 class="your-expenses"></h1>
+                </div>
+                <div class="progress">
+                  <div class="number">
+                    <a href="#" class="create-expenses-btn">
+                      <span class="material-icons">add</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <small class="text-muted">Last month</small>
+            </div>
+            <!-- INCOME -->
+            <div class="income">
+              <span class="material-icons">stacked_line_chart</span>
+              <div class="middle">
+                <div class="left">
+                  <h3>Ingresos</h3>
+                  <h1 class="your-income"></h1>
+                </div>
+                <div class="progress">
+                  <div class="number">
+                    <a href="#" class="create-income-btn">
+                      <span class="material-icons">add</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <small class="text-muted">Last month</small>
+            </div>
+            <!-- USDT -->
+            <div class="usdt">
+              <span class=""><img src="./images/usdt.png" alt=""></span>
+              <div class="middle">
+                <div class="left">
+                  <h3>USDT</h3>
+                  <h1 class="your-usdt"></h1>
+                  <p class="text-muted your-usdt-in-ars"></p>
+                </div>
+                <div class="progress">
+                  <div class="number">
+                    <a href="#" class="usdt-btn">
+                    <span class="material-icons usdt-btn">add</span>
+                  </a>
+                  </div>
+                </div>
+              </div>
+              <small class="text-muted">1 USDT = ARS$</small>
+              <small class="text-muted usd-price"></small>
+            </div>
+          </div>
+        </main>
+      
+      <div class="right">
         <div class="top">
-          <div class="logo">
-            <img src="./images/logo.png" alt="" />
-            <h2>MONEY<span class="danger">TRACK</span></h2>
-          </div>
-          <div class="close" id="close-btn">
-            <span class="material-icons">close</span>
-          </div>
+            <button class="menu-btn">
+              <span class="material-icons">menu</span>
+            </button>
+            <div class="theme-toggler">
+              <span class="material-icons active">brightness_4</span>
+              <span class="material-icons">dark_mode</span>
+            </div>
         </div>
-        <div class="sidebar">
-          <a href="#" class="active">
-            <span class="material-icons">grid_view</span>
-            <h3>Dashboard</h3>
-          </a>
-          <a href="#"class="create-income-btn">
-            <span class="material-icons">arrow_upward</span>
-            <h3>Añadir Ingreso</h3>
-          <a href="#" class="create-expenses-btn">
-            <span class="material-icons">arrow_downward</span>
-            <h3>Añadir Gasto</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">settings</span>
-            <h3>Settings</h3>
-          </a>
-          <a href="#">
-            <span class="material-icons">logout</span>
-            <h3>Logout</h3>
-          </a>
-        </div>
-      </aside>
-      <!-- END OF ASIDE -->
-      <main>
-        <h1>Dashboard</h1>
-        <div class="date">
-          <input type="date" />
-        </div>
-        <div class="insights">
-          <!-- AHORROS -->
-          <div class="savings">
-            <span class="material-icons">analytics</span>
-            <div class="middle">
-              <div class="left">
-                <h3>Tu Dinero</h3>
-                <h1 class="your-money"></h1>
-              </div>
-              <div class="progress">
-                <div class="number">
-                  
-                </div>
-              </div>
-            </div>
-            <small class="text-muted">Last month</small>
-          </div>
-          <!-- EXPENSES -->
-          <div class="expenses">
-            <span class="material-icons">bar_chart</span>
-            <div class="middle">
-              <div class="left">
-                <h3>Gastos</h3>
-                <h1 class="your-expenses"></h1>
-              </div>
-              <div class="progress">
-                <div class="number">
-                  <a href="#" class="create-expenses-btn">
-                    <span class="material-icons">add</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <small class="text-muted">Last month</small>
-          </div>
-          <!-- INCOME -->
-          <div class="income">
-            <span class="material-icons">stacked_line_chart</span>
-            <div class="middle">
-              <div class="left">
-                <h3>Ingresos</h3>
-                <h1 class="your-income"></h1>
-              </div>
-              <div class="progress">
-                <div class="number">
-                  <a href="#" class="create-income-btn">
-                    <span class="material-icons">add</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <small class="text-muted">Last month</small>
-          </div>
-          <!-- USDT -->
-          <div class="usdt">
-            <span class=""><img src="./images/usdt.png" alt=""></span>
-            <div class="middle">
-              <div class="left">
-                <h3>USDT</h3>
-                <h1 class="your-usdt"></h1>
-                <p class="text-muted your-usdt-in-ars"></p>
-              </div>  
-              <div class="progress">
-                <div class="number">
-                  <a href="#" class="usdt-btn">
-                  <span class="material-icons usdt-btn">add</span>
-                </a>
-                </div>
-              </div>
-            </div>
-            <small class="text-muted usd-price"></small>
-          </div>
-          <!-- BNB -->
-          <div class="bnb">
-            <span class=""><img src="./images/bnb.png" alt=""></span>
-            <div class="middle">
-              <div class="left">
-                <h3>BNB</h3>
-                <h1 class="your-bnb"></h1>
-              </div>
-              <div class="progress">
-                <div class="number">
-                  <a href="#" class="bnb-btn">
-                    <span class="material-icons bnb-btn">add</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <small class="text-muted">Last month</small>
-          </div>
-        </div>
-      </main>
+      </div>
     </div>
-    <div class="modal-wrapper"></div>
-    <script src="./index.js"></script>
-  </body>
+      <script src="./index.js"></script>
+    </body>
+  </div>
 </html>

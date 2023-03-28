@@ -1,6 +1,16 @@
+// ARS
 const yourMoney = document.querySelector(".your-money");
 const yourExpenses = document.querySelector(".your-expenses");
 const yourIncome = document.querySelector(".your-income");
+// USDT
+const yourUsdt = document.querySelector(".your-usdt");
+const usdtArs = document.querySelector(".your-usdt-in-ars");
+const dolarHtml = document.querySelector(".usd-price");
+// Botones
+const usdtBtn = document.querySelector(".usdt-btn");
+const expensesBtn = document.querySelectorAll(".create-expenses-btn");
+const incomeBtn = document.querySelectorAll(".create-income-btn");
+const themeToggler = document.querySelector(".theme-toggler");
 
 let money = 0;
 let expenses = 0;
@@ -21,6 +31,7 @@ modals.forEach((modal) => {
   observer.observe(modal);
 });
 
+// Fetch Dolar
 const fetchDolar = async () => {
   const response = await fetch(
     "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
@@ -92,40 +103,37 @@ const openModal = (type) => {
 
   if (type === "usdt") {
     const addUsdtBtn = document.getElementById("add-usdt-btn");
-
     addUsdtBtn.addEventListener("click", (e) => {
       createUsdt(e);
     });
   } else if (type === "income") {
     const addIncomeBtn = document.getElementById("add-income-btn");
-
     addIncomeBtn.addEventListener("click", (e) => {
       createIncome(e);
     });
   } else if (type === "expenses") {
     const addExpensesBtn = document.getElementById("add-expenses-btn");
-
     addExpensesBtn.addEventListener("click", (e) => {
       createExpenses(e);
     });
   }
+  const blur = document.querySelector(".modal-wrapper");
+  blur.classList.toggle("blur");
 };
 
 const closeModal = () => {
   const modal = document.querySelector(".modal.open");
   modal.remove();
+  const blur = document.querySelector(".modal-wrapper");
+  blur.classList.toggle("blur");
 };
-
-// Botones
-const usdtBtn = document.querySelector(".usdt-btn");
-const expensesBtn = document.querySelectorAll(".create-expenses-btn");
-const incomeBtn = document.querySelectorAll(".create-income-btn");
 
 const addIncome = (amount) => {
   income += amount;
   yourIncome.innerHTML = `$${parseInt(income)}`;
   money += amount;
   yourMoney.innerHTML = `$${parseInt(money)}`;
+  saveLocalStorage();
 };
 
 const createIncome = (e) => {
@@ -140,6 +148,7 @@ const addExpenses = (amount) => {
   yourExpenses.innerHTML = `$${parseInt(expenses)}`;
   money -= amount;
   yourMoney.innerHTML = `$${parseInt(money)}`;
+  saveLocalStorage();
 };
 
 const createExpenses = (e) => {
@@ -148,9 +157,7 @@ const createExpenses = (e) => {
   addExpenses(parseInt(amount));
   closeModal();
 };
-const yourUsdt = document.querySelector(".your-usdt");
-const usdtArs = document.querySelector(".your-usdt-in-ars");
-const dolarHtml = document.querySelector(".usd-price");
+
 const addUsdt = (amount) => {
   const select = document.getElementById("usdt-select");
   const type = select.value;
@@ -171,15 +178,11 @@ const addUsdt = (amount) => {
     money -= amount * parseInt(dolarHtml.innerHTML);
     yourMoney.innerHTML = `$${parseInt(money)}`;
   }
+  saveLocalStorage();
 };
 
-const createUsdt = (e) => {
-  e.preventDefault();
-  const amount = e.target.previousElementSibling.value;
-  addUsdt(amount);
-  closeModal();
-};
-const init = () => {
+const eventListeners = () => {
+  // Modal
   incomeBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
       openModal("income");
@@ -193,7 +196,71 @@ const init = () => {
   usdtBtn.addEventListener("click", () => {
     openModal("usdt");
   });
+  // Dark theme
+  themeToggler.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme-variables");
+
+    themeToggler.querySelector("span:nth-child(1)").classList.toggle("active");
+    themeToggler.querySelector("span:nth-child(2)").classList.toggle("active");
+  });
+  // Aside
+  menuBtn.addEventListener("click", () => {
+    sideMenu.style.display = "block";
+  });
+  closeMenuBtn.addEventListener("click", () => {
+    sideMenu.style.display = "none";
+  });
+};
+
+const createUsdt = (e) => {
+  e.preventDefault();
+  const amount = e.target.previousElementSibling.value;
+  addUsdt(amount);
+  closeModal();
+};
+
+const saveLocalStorage = () => {
+  localStorage.setItem("money", money);
+  localStorage.setItem("income", income);
+  localStorage.setItem("expenses", expenses);
+  localStorage.setItem("usdt", usdt);
+  localStorage.setItem("dolar", parseInt(dolarHtml.innerHTML));
+};
+
+const getLocalStorage = () => {
+  if (localStorage.getItem("money")) {
+    money = parseInt(localStorage.getItem("money"));
+    yourMoney.innerHTML = `$${parseInt(money)}`;
+  }
+  if (localStorage.getItem("income")) {
+    income = parseInt(localStorage.getItem("income"));
+    yourIncome.innerHTML = `$${parseInt(income)}`;
+  }
+  if (localStorage.getItem("expenses")) {
+    expenses = parseInt(localStorage.getItem("expenses"));
+    yourExpenses.innerHTML = `$${parseInt(expenses)}`;
+  }
+  if (localStorage.getItem("usdt")) {
+    usdt = parseInt(localStorage.getItem("usdt"));
+    yourUsdt.innerHTML = `$${parseInt(usdt)}`;
+    usdtArs.innerHTML = `ARS$${
+      parseInt(usdt) * parseInt(localStorage.getItem("dolar"))
+    }`;
+  }
+};
+
+// Aside
+const sideMenu = document.querySelector("aside");
+const menuBtn = document.querySelector(".menu-btn");
+const closeMenuBtn = document.getElementById("close-btn");
+
+const init = () => {
   fetchDolar();
+  document.addEventListener("DOMContentLoaded", () => {
+    getLocalStorage();
+  });
+
+  eventListeners();
 };
 
 init();
