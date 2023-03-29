@@ -259,7 +259,6 @@ const init = () => {
   document.addEventListener("DOMContentLoaded", () => {
     getLocalStorage();
   });
-
   eventListeners();
 };
 
